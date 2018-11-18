@@ -4,10 +4,12 @@
   "description": "This is a test directory to learn git and node",
   "main": "index.html",
   "scripts": {
-    "start": "npm run lite",
+    "start": "npm run watch:all",
     "lite": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss": "node-sass -o css/ css/"
+    "scss": "node-sass -o css/ css/",
+    "watch:scss": "onchange \"css/*scss\" -- npm run scss",
+    "watch:all": "parallelshell \"npm run watch:scss\" \"npm run lite\"" 
   },
   "repository": {
     "type": "git",
@@ -21,7 +23,9 @@
   "homepage": "https://github.com/ghazanfar23/coursera#readme",
   "devDependencies": {
     "lite-server": "^2.4.0",
-    "node-sass": "^4.10.0"
+    "node-sass": "^4.10.0",
+    "onchange": "^5.1.0",
+    "parallelshell": "^3.0.2"
   },
   "dependencies": {
     "bootstrap": "^4.0.0",
